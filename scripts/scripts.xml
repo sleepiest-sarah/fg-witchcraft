@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+  <script name="WC_Data" file="scripts/witchcraft_data.lua" />
+	<script name="WC" file="scripts/witchcraft.lua" />
+</root>

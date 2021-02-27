@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+  <windowclass name="WC_Roller">
+ 		<script file="desktop/scripts/wc_roller.lua"/>
+		<frame>charsheet</frame>
+    
+    <!--<nodelete />-->
+    <playercontrol />
+    
+		<sizelimits>
+			<minimum width="300" height="360" />
+			<maximum width="300" height="360" />
+		</sizelimits>
+    
+    <sheetdata>
+      
+			<genericcontrol name="PreparationDiceFrame">
+				<anchored height="170">
+					<top anchor="top" offset="45"/>
+					<left offset="25"/>
+					<right offset="-25"/>
+				</anchored>
+				<frame name="groupbox" offset="0,0,0,0"/>
+			</genericcontrol>
+      
+      <label name="KnowledgeLabel">
+        <static text="Knowledge" />
+        <anchored to="PreparationDiceFrame">
+          <top offset="10" />
+          <left offset="10" />
+        </anchored>
+      </label>
+      <buttonc_checkbox name="KnowledgeCheckbox">
+        <anchored width="30" height="20">
+          <top parent="KnowledgeLabel" anchor="top"/>
+          <left parent="KnowledgeLabel" anchor="right" offset="10"/>
+        </anchored>     
+        <script>
+          function onValueChanged()
+            window.preparationDiceChange()
+          end
+        </script>
+      </buttonc_checkbox>
+      
+      <label name="MaterialsLabel">
+        <static text="High-Quality Materials" />
+        <anchored to="KnowledgeLabel">
+          <top offset="20" />
+          <left offset="0" />
+        </anchored>
+      </label>
+      <buttonc_checkbox name="MaterialsCheckbox">
+        <anchored width="30" height="20">
+          <top parent="MaterialsLabel" anchor="top"/>
+          <left parent="MaterialsLabel" anchor="right" offset="10"/>
+        </anchored>
+        <script>
+          function onValueChanged()
+            window.preparationDiceChange()
+          end
+        </script>        
+      </buttonc_checkbox>
+      
+      <label name="AssistanceLabel">
+        <static text="Assistance" />
+        <anchored to="MaterialsLabel">
+          <top offset="20" />
+          <left offset="0" />
+        </anchored>
+      </label>
+      <buttonc_checkbox name="AssistanceCheckbox">
+        <anchored width="30" height="20">
+          <top parent="AssistanceLabel" anchor="top"/>
+          <left parent="AssistanceLabel" anchor="right" offset="10"/>
+        </anchored>      
+        <script>
+          function onValueChanged()
+            window.preparationDiceChange()
+          end
+        </script>
+      </buttonc_checkbox>
+      
+      <label name="SacrificeLabel">
+        <static text="Sacrifice" />
+        <anchored to="AssistanceLabel">
+          <top offset="20" />
+          <left offset="0" />
+        </anchored>
+      </label>
+      <buttonc_checkbox name="SacrificeCheckbox">
+        <anchored width="30" height="20">
+          <top parent="SacrificeLabel" anchor="top"/>
+          <left parent="SacrificeLabel" anchor="right" offset="10"/>
+        </anchored>      
+        <script>
+          function onValueChanged()
+            window.preparationDiceChange()
+          end
+        </script>
+      </buttonc_checkbox>
+      
+      <label name="GenerosityLabel">
+        <static text="Generosity" />
+        <anchored to="SacrificeLabel">
+          <top offset="20" />
+          <left offset="0" />
+        </anchored>
+      </label>
+      <buttonc_checkbox name="GenerosityCheckbox">
+        <anchored width="30" height="20">
+          <top parent="GenerosityLabel" anchor="top"/>
+          <left parent="GenerosityLabel" anchor="right" offset="10"/>
+        </anchored>      
+        <script>
+          function onValueChanged()
+            window.preparationDiceChange()
+          end
+        </script>
+      </buttonc_checkbox>
+      
+      <label name="InspirationLabel">
+        <static text="Inspiration" />
+        <anchored to="GenerosityLabel">
+          <top offset="20" />
+          <left offset="0" />
+        </anchored>
+      </label>
+      <buttonc_checkbox name="InspirationCheckbox">
+        <anchored width="30" height="20">
+          <top parent="InspirationLabel" anchor="top"/>
+          <left parent="InspirationLabel" anchor="right" offset="10"/>
+        </anchored>      
+        <script>
+          function onValueChanged()
+            window.preparationDiceChange()
+          end
+        </script>
+      </buttonc_checkbox>
+      
+      <label name="BonusDiceLabel">
+        <static text="Bonus" />
+        <anchored to="InspirationLabel">
+          <top offset="20" />
+          <left offset="0" />
+        </anchored>
+      </label>
+      <buttonc_checkbox name="BonusDiceCheckbox1">
+        <anchored width="10" height="20">
+          <top parent="BonusDiceLabel" anchor="top"/>
+          <left parent="BonusDiceLabel" anchor="right" offset="10"/>
+        </anchored>      
+        <script>
+          function onValueChanged()
+            window.preparationDiceChange()
+          end
+        </script>
+      </buttonc_checkbox>
+      <buttonc_checkbox name="BonusDiceCheckbox2">
+        <anchored width="10" height="20">
+          <top parent="BonusDiceCheckbox1" anchor="top"/>
+          <left parent="BonusDiceCheckbox1" anchor="right" offset="10"/>
+        </anchored>      
+        <script>
+          function onValueChanged()
+            window.preparationDiceChange()
+          end
+        </script>
+      </buttonc_checkbox>
+      <buttonc_checkbox name="BonusDiceCheckbox3">
+        <anchored width="10" height="20">
+          <top parent="BonusDiceCheckbox2" anchor="top"/>
+          <left parent="BonusDiceCheckbox2" anchor="right" offset="10"/>
+        </anchored>      
+        <script>
+          function onValueChanged()
+            window.preparationDiceChange()
+          end
+        </script>
+      </buttonc_checkbox>
+      
+      <label name="ToolModifierLabel">
+        <static text="Tool Stat" />
+        <anchored to="PreparationDiceFrame" width="60" height="20">
+          <top anchor="bottom" offset="20" />
+          <left anchor="left" offset="5" />
+        </anchored>
+      </label>
+      <cycler_ability name="ToolModifier">
+        <anchored to="ToolModifierLabel" width="30" height="20">
+          <top anchor="bottom" offset="5" />
+          <left anchor="left" position="center" />
+        </anchored>
+      </cycler_ability>
+      
+      <button_skillprof name="ToolProficiency">
+				<anchored to="ToolModifier" width="20" height="20">
+          <top />
+          <left anchor="right" offset="40" />
+        </anchored>
+			</button_skillprof>
+      
+			<string_poweractionview name="CraftingRollView">
+				<anchored to="ToolModifierLabel" width="140" height="25">
+          <top anchor="bottom" offset="40" />
+          <left />
+        </anchored>
+			</string_poweractionview>      
+      
+      <buttoncontrol name="RollButton">
+        <font>button-white</font>
+        <pressed frame="buttondown" frameoffset="1,1"/>
+        <state frame="buttonup" frameoffset="1,1"/>
+        <anchored to="CraftingRollView" width="50" height="25">
+          <top  />
+          <left anchor="right" offset="20"/>
+        </anchored>
+        <text>Roll</text>
+      </buttoncontrol>
+      
+      <close_charsheet />
+    </sheetdata>
+    
+  </windowclass>
+</root>

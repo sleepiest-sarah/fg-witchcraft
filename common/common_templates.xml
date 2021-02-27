@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+  <template name="cycler_ability_column">
+    <cycler_ability>
+      <anchored mergerule="replace" width="40" height="20">
+        <top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+        <left offset="97" />
+      </anchored>
+    </cycler_ability>
+  </template>
+  
+  <template name="button_stringcycler_column">
+    <button_stringcycler>
+      <anchored mergerule="replace" width="100" height="20">
+        <top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+        <left offset="97" />
+      </anchored>
+    </button_stringcycler>
+  </template>
+  
+  <template name="crafting_difficulty_cycler">
+   <button_stringcycler_column>
+    <parameters>
+      <defaultlabel mergerule="replace">-</defaultlabel>
+      <labels>1-Basic|2-Simple|3-Intermediate|4-Advanced|5-Complex|6-Master|7+-Legendary</labels>
+      <values>1|2|3|4|5|6|7</values>
+    </parameters>
+  </button_stringcycler_column> 
+  </template>
+  
+  <template name="crafting_size_cycler">
+    <button_stringcycler_column>
+      <parameters>
+        <defaultlabel mergerule="replace">-</defaultlabel>
+        <labels>Tiny|Small|Medium|Large|Huge</labels>
+        <values>0.5|1|2|3|4</values>
+      </parameters>
+    </button_stringcycler_column>     
+  </template>
+
+  <template name="button_checkbox_columnh_right">
+    <button_checkbox_columnh>
+      <anchored>
+				<right offset="-5" />
+        <left merge="delete" />
+			</anchored>
+    </button_checkbox_columnh>
+  </template>
+  
+  <template name="button_checkbox_columnh_right2">
+    <button_checkbox_columnh_right>
+      <anchored>
+        <top relation="current" offset="-20"/>
+				<right offset="-20" />
+			</anchored>    
+    </button_checkbox_columnh_right>
+  </template>
+  
+  <template name="button_checkbox_columnh_right3">
+    <button_checkbox_columnh_right2>
+      <anchored>
+				<right offset="-35" />
+			</anchored>    
+    </button_checkbox_columnh_right2>
+  </template>
+  
+  <template name="button_skillprof_column">
+    <button_skillprof>
+      <anchored mergerule="replace" width="20" height="20">
+        <top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+        <left offset="102" />
+      </anchored>
+    </button_skillprof>      
+  </template>
+  
+  <template name="string_column2">
+    <string_column>
+      <anchored>
+        <top relation="current" offset="-18"/>
+        <left mergerule="replace" offset="150"/>
+			</anchored>      
+    </string_column>  
+  </template>
+
+</root>

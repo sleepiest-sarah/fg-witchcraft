@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+
+<root version="3.0">
+
+	<properties>
+		<name>Witch+Craft Helper</name>
+    <version>0.1</version>
+    <loadorder>100</loadorder>
+    <author>sarah</author>
+    <description>A helper for Witch+Craft, a 5E crafting supplement</description>
+    <ruleset>
+      <name>5E</name>
+      <minrelease>1</minrelease>
+    </ruleset>
+  </properties>
+
+	<announcement text="Witch+Craft Helper Loaded" font="systemfont" />
+
+	<base>
+		<includefile source="graphics/graphics.xml" />
+    <includefile source="strings/wc_strings.xml" />
+    
+    <includefile source="common/common_templates.xml" />
+    <includefile source="desktop/windows.xml" />
+    <includefile source="campaign/campaign.xml" />
+    <includefile source="scripts/scripts.xml" />
+	</base>
+</root>

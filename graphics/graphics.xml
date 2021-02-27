@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+
+	<icon name="raise_hand_button" file="graphics/icons/raise_hand.png" />
+	<icon name="raise_hand_chat" file="graphics/icons/raise_hand_clear.png" />
+	<icon name="logo" file="graphics/icons/logo.png" />
+
+	</root>

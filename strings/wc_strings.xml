@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+  
+	<string name="library_recordtype_label_craftingproject">Projects</string>
+	<string name="library_recordtype_single_craftingproject">Crafting Project</string>
+  <string name="library_recordtype_empty_craftingproject">&#171; New Crafting Project &#187;</string>
+  
+  <string name="craftingproject_label_crafter">Crafter</string>
+  <string name="craftingproject_label_description">Description</string>
+  <string name="craftingproject_label_tier">Crafting Tier</string>
+  <string name="craftingproject_label_tierstamina">Daily Stamina</string>
+  <string name="craftingproject_label_tierdice">Crafting Dice</string>
+  <string name="craftingproject_label_difficulty">Difficulty</string>
+  <string name="craftingproject_label_dc">DC</string>
+  <string name="craftingproject_label_size">Project Size</string>
+  <string name="craftingproject_label_projectstamina">Project Stam.</string>
+  <string name="craftingproject_label_knowledge">Knowledge</string>
+  <string name="craftingproject_label_materials">High-Quality Materials</string>
+  <string name="craftingproject_label_assistance">Assistance</string>
+  <string name="craftingproject_label_sacrifice">Sacrifice</string>
+  <string name="craftingproject_label_generosity">Generosity</string>
+  <string name="craftingproject_label_inspiration">Inspiration</string>
+  <string name="craftingproject_label_toolmod">Tool Modifier</string>
+  <string name="craftingproject_label_toolprof">Tool Proficiency</string>
+  <string name="craftingproject_label_bonus">Bonus</string>
+  <string name="craftingproject_label_custombonus">Custom Bonus</string>
+  <string name="craftingproject_label_preparation">Prep. Dice</string>
+  <string name="craftingproject_label_successpct">Success</string>
+  <string name="craftingproject_label_result">Result</string>
+  <string name="craftingproject_label_flawboon">Flaw and Boon Descriptions</string>
+  <string name="craftingproject_label_boonresult">Boons</string>
+  <string name="craftingproject_label_flawresult">Flaws</string>
+  <string name="craftingproject_label_flawboonlink">Flaw and Boon Tables</string>
+  
+</root>

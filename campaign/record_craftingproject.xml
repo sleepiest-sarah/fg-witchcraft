@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="craftingproject">
+    <script file="campaign/scripts/craftingproject.lua" />
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="380" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="380" height="350" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_note</minimize>
+		<playercontrol />
+		<nodelete />
+		<sharable />
+		<tooltip field="name" />
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>craftingproject_header</class>
+			</sub_record_header>
+
+			<frame_record_content name="contentframe" />
+      
+      <subwindow_record name="main">
+        <class>craftingproject_main</class>
+        <activate />
+      </subwindow_record>
+      
+			<scrollbar>
+				<anchored to="main" />
+				<target>main</target>
+			</scrollbar>
+
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="craftingproject_header">   
+		<margins control="0,0,0,7" />
+    <script file="campaign/scripts/craftingproject_header.lua" />
+		<sheetdata>
+			<link_record_header_id name="link">
+				<class>craftingproject</class>
+			</link_record_header_id>
+			<anchor_record_header_right name="rightanchor" />
+			<icon_record_locked />
+			<button_record_locked />
+
+			<string_record_name_id name="name">
+				<empty textres="library_recordtype_empty_craftingproject" />
+			</string_record_name_id>
+		</sheetdata>
+	</windowclass>
+  
+	<windowclass name="craftingproject_main">
+		<margins control="0,0,0,2" />
+		<script file="campaign/scripts/craftingproject_main.lua" />
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+      
+      <label_column name="crafter_label">
+        <static textres="craftingproject_label_crafter" />
+      </label_column>
+      <string_column name="crafter">
+        <readonly />
+      </string_column>
+      
+      <label_column name="description_label">
+        <static textres="craftingproject_label_description"/>
+      </label_column>
+      <string_column name="notes" />
+      
+      <line_column name="divider" />
+      
+      <label_column name="tier_label">
+        <static textres="craftingproject_label_tier" />
+      </label_column>
+      <number_columnh name="tier">
+        <default>1</default>
+        <min>1</min>
+        <max>5</max>
+      </number_columnh>
+      
+      <label_column name="tierdice_label">
+        <static textres="craftingproject_label_tierdice" />
+      </label_column>
+      <string_column name="tier_dice">
+        <readonly />
+      </string_column>
+      
+      <label_column name="tierstamina_label">
+        <static textres="craftingproject_label_tierstamina" />
+      </label_column>
+      <string_column name="tier_stamina">
+        <readonly />
+      </string_column>
+    
+      <line_column name="divider6" />
+      
+      <label_column name="difficulty_label">
+        <static textres="craftingproject_label_difficulty" />
+      </label_column>
+      <crafting_difficulty_cycler name="difficulty">
+      </crafting_difficulty_cycler>
+      
+      <label_column name="DC_label">
+        <static textres="craftingproject_label_dc" />
+      </label_column>
+      <number_columnh name="DC">
+        <min>0</min>
+      </number_columnh>
+      
+      <label_column name="size_label">
+        <static textres="craftingproject_label_size" />
+      </label_column>
+      <crafting_size_cycler name="project_size">
+      </crafting_size_cycler>      
+      
+      <label_column name="projectstamina_label">
+        <static textres="craftingproject_label_projectstamina" />
+      </label_column>
+      <number_columnh name="spentstamina">
+      </number_columnh>
+      <simplestringc>
+        <static text="/" />
+        <anchored to="spentstamina">
+          <top anchor="top"/>
+          <left anchor="right" offset="8" />
+        </anchored>
+        <readonly />
+      </simplestringc>
+      <basicnumber name="project_stamina">
+        <anchored width="40" height="20" to="spentstamina">
+          <top anchor="top" />
+          <left anchor="right" offset="21" />
+        </anchored>
+      </basicnumber>
+      
+      <line_column name="divider2" />
+      
+      <label_column name="knowledge_label">
+        <static textres="craftingproject_label_knowledge" />
+      </label_column>
+      <button_checkbox_columnh_right name="knowledge_checkbox" />
+      <button_checkbox_columnh_right2 name="knowledge_checkbox2" />
+      <button_checkbox_columnh_right3 name="knowledge_checkbox3" />
+      <string_columnh_full name="knowledge_notes" />
+      
+      <label_column name="materials_label">
+        <static textres="craftingproject_label_materials" />
+      </label_column>
+      <button_checkbox_columnh_right name="materials_checkbox" />
+      <button_checkbox_columnh_right2 name="materials_checkbox2" />
+      <button_checkbox_columnh_right3 name="materials_checkbox3" />
+      <string_columnh_full name="materials_notes" />
+      
+      <label_column name="assistance_label">
+        <static textres="craftingproject_label_assistance" />
+      </label_column>
+      <button_checkbox_columnh_right name="assistance_checkbox" />
+      <button_checkbox_columnh_right2 name="assistance_checkbox2" />
+      <button_checkbox_columnh_right3 name="assistance_checkbox3" />      
+      <string_columnh_full name="assistance_notes" />
+      
+      <label_column name="sacrifice_label">
+        <static textres="craftingproject_label_sacrifice" />
+      </label_column>
+      <button_checkbox_columnh_right name="sacrifice_checkbox" />
+      <string_columnh_full name="sacrifice_notes" />
+      
+      <label_column name="generosity_label">
+        <static textres="craftingproject_label_generosity" />
+      </label_column>
+      <button_checkbox_columnh_right name="generosity_checkbox" />
+      <string_columnh_full name="generosity_notes" />
+      
+      <label_column name="inspiration_label">
+        <static textres="craftingproject_label_inspiration" />
+      </label_column>
+      <button_checkbox_columnh_right name="inspiration_checkbox" />
+      <string_columnh_full name="inspiration_notes" />
+      
+      <line_column name="divider3" />
+
+      <label_column name="tool_modifier_label">
+        <static textres="craftingproject_label_toolmod" />
+      </label_column>
+      <cycler_ability_column name="tool_modifier" />
+      
+      <label_column name="tool_proficiency_label">
+        <static textres="craftingproject_label_toolprof" />
+      </label_column>
+      <button_skillprof_column name="tool_proficiency"/>     
+      
+      <label_column name="bonus_label">
+        <static textres="craftingproject_label_bonus" />
+      </label_column>
+      <string_column name="bonus">
+        <readonly />
+      </string_column>
+      
+      <label_column name="custombonus_label">
+        <static textres="craftingproject_label_custombonus" />
+      </label_column>
+      <number_columnh name="custombonus">
+        <default>0</default>
+      </number_columnh>
+
+      <line_column name="divider4" />
+      
+      <label_column name="success_pct_label">
+        <static textres="craftingproject_label_successpct" />
+      </label_column>
+      <string_column name="success_pct">
+        <readonly />
+      </string_column>
+      
+			<string_poweractionview name="roll_view">
+				<anchored width="80" height="25">
+          <top parent="columnanchor" anchor="bottom" relation="current" offset="7" />
+          <left offset="10" />
+        </anchored>
+			</string_poweractionview>      
+      
+      <buttoncontrol name="roll_button">
+        <font>button-white</font>
+        <pressed frame="buttondown" frameoffset="1,1"/>
+        <state frame="buttonup" frameoffset="1,1"/>
+        <anchored width="50" height="25">
+          <top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+          <left offset="100" />
+        </anchored>
+        <text>Roll</text>
+      </buttoncontrol>
+      
+      <line_column name="divider5" />
+			
+      <label_column name="result_label">
+        <static textres="craftingproject_label_result" />
+      </label_column>
+      <string_column name="result_value">
+        <readonly />
+      </string_column>
+      <string_column name="result_type">
+        <font>sheetlabel</font>
+        <readonly />
+      </string_column>
+
+      
+      <label_column name="boon_label">
+        <static textres="craftingproject_label_boonresult" />
+      </label_column>
+      <number_columnh name="boon_result">
+      </number_columnh>
+      <string_column2 name="boon_result_type">
+        <readonly />
+      </string_column2>
+      
+      <label_column name="flaw_label">
+        <static textres="craftingproject_label_flawresult" />
+      </label_column>
+      <number_columnh name="flaw_result">
+      </number_columnh>
+      <string_column2 name="flaw_result_type">
+        <readonly />
+      </string_column2>
+
+      <linkcontrol name="flaws_link">
+        <class>masterindex</class>
+        <recordname>tables</recordname>
+        <anchored width="30" height="20">
+          <top parent="columnanchor" anchor="bottom" relation="current" offset="7" />
+          <right offset="-10" />
+        </anchored>      
+      </linkcontrol>
+      <simplestringc name="flaw_boon_link_label">
+        <static textres="craftingproject_label_flawboonlink" />
+        <anchored width="125" height="20">
+          <top parent="columnanchor" anchor="bottom" relation="current" offset="7" />
+          <right offset="-35" />
+        </anchored>      
+        <readonly />
+      </simplestringc>
+      <label_column name="flawboon_notes_label">
+        <static textres="craftingproject_label_flawboon" />
+      </label_column>
+      <spacer_column />
+      <string_columnh_full name="flawboon_notes">
+        <anchored>
+          <top offset="25"/>
+        </anchored>
+      </string_columnh_full>
+    
+		</sheetdata>
+	</windowclass>  
+  
+</root>
