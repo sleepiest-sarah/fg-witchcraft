@@ -60,12 +60,18 @@ end
 
 function initializeCrafterField()
   if (crafter.getValue() == "") then
-    if (not User.isHost() and getDatabaseNode().isOwner()) then
-      local current_char = User.getCurrentIdentity()
+    local node = getDatabaseNode()
+    if (not User.isHost() and node.isOwner()) then
+      local identity = User.getCurrentIdentity()
+      local current_char = User.getIdentityLabel()
+      
+      local crafterIdentity = node.createChild("crafterIdentity", "string")
+      crafterIdentity.setValue(identity)
+
       if (current_char) then
         crafter.setValue(current_char)
       end
-    elseif (User.isHost() and getDatabaseNode.getOwner() == "") then
+    elseif (User.isHost() and node.getOwner() == "") then
       crafter.setValue("DM")
     end
   end
@@ -218,19 +224,18 @@ end
 function calculateFields()
   local modifier, custom_bonus = getRollModifier()
   
-  if (WC.isRecordCreator(getDatabaseNode())) then
-    craftingRollModifier = modifier + custom_bonus
-    bonus.setValue(getModifierPrefix(modifier) .. tostring(modifier))
-  end
+  craftingRollModifier = modifier + custom_bonus
+  bonus.setValue(getModifierPrefix(modifier) .. tostring(modifier))
   
   local numPrepDice, prepDice = getPrepDice()
   prepDiceArray = prepDice
   
   local dc = DC.getValue()
-  local success = calculateSuccess(dc, numPrepDice, modifier)
+  local success = calculateSuccess(dc, numPrepDice, craftingRollModifier)
   success_pct.setValue(tostring(round(success*100,2)).."%")
   
-  local roll_string = tostring(numPrepDice) .. "d6+" .. tostring(modifier)
+  local modifier_string = modifier < 0 and tostring(modifier) or "+"..tostring(modifier)
+  local roll_string = tostring(numPrepDice) .. "d6" .. modifier_string
   roll_string = custom_bonus ~= 0 and roll_string .. "+(" .. tostring(custom_bonus) .. ")" or roll_string
   
   roll_view.setValue(roll_string)  
@@ -248,33 +253,27 @@ function updateTierFields()
 end
 
 function updateDifficultyFields()
-  if (difficulty.getStringValue() ~= "-") then
-    local diff_num = difficulty.getStringValue()
-    local dc_value = (diff_num * 5) + 5
-    
-    DC.setValue(dc_value)
-  else
-    DC.setValue(0)
-  end
+  local diff_num = difficulty.getStringValue() ~= "" and tonumber(difficulty.getStringValue()) or 0
+  local dc_value = diff_num == 0 and 0 or (diff_num * 5) + 5
+  
+  DC.setValue(dc_value)
 end
 
 function updateSizeFields()
-  local size_mult = project_size.getStringValue() and tonumber(project_size.getStringValue()) or 0
-  local diff_num = difficulty.getStringValue() and tonumber(difficulty.getStringValue()) or 0
+  local size_mult = project_size.getStringValue() ~= "" and tonumber(project_size.getStringValue()) or 0
+  local diff_num = difficulty.getStringValue() ~= "" and tonumber(difficulty.getStringValue()) or 0
   
   local required_stamina = diff_num * size_mult
   project_stamina.setValue(required_stamina)
 end
 
 function getRollModifier()
-  local identity = User.getCurrentIdentity()
+  local identity = getCrafterIdentity()
   
   local custom_bonus = custombonus.getValue() or 0
   
   if ((not User.isHost() and not identity) or (User.isHost() and getDatabaseNode().getOwner() == "")) then
     return 0, custom_bonus
-  elseif (User.isHost()) then
-    return bonus.getValue() or 0, custom_bonus
   end
   
   local actor = ActorManager.getActor("pc", "charsheet.".. identity)
@@ -331,6 +330,9 @@ function setReadOnlyState(flag)
   sacrifice_notes.setReadOnly(flag)
   generosity_notes.setReadOnly(flag)
   inspiration_notes.setReadOnly(flag)
+  flaw_result.setReadOnly(flag)
+  boon_result.setReadOnly(flag)
+  custombonus.setReadOnly(flag)
   flawboon_notes.setReadOnly(flag)
   
   for i,c in pairs(prep_checkboxes) do
@@ -362,6 +364,11 @@ end
 -----------
 --Helpers--
 -----------
+function getCrafterIdentity()
+  local node = getDatabaseNode()
+  local crafterIdentity = node.getChild("crafterIdentity")
+  return crafterIdentity and crafterIdentity.getValue()
+end
 
 function getPrepDice()
   local prep_dice = {}
@@ -401,12 +408,10 @@ function getBoonFlawBuckets(n)
 end
 
 function getModifierPrefix(modifier)
-  if (modifier == 0) then
-    return ""
-  elseif (modifier > 0) then
-    return "+"
+  if (modifier > 0) then
+    return  "+"
   else
-    return "-"
+    return ""
   end
 end
 

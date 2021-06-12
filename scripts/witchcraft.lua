@@ -39,16 +39,6 @@ end
 
 function registerShortcuts()
   local uiDbName = User.isHost() and buildPath(DB_ROOT_NAME, DB_ROOT_UI_NAME) or buildPath(DB_ROOT_NAME, DB_ROOT_UI_NAME, User.getUsername())  
-  
-  --roller
-  DesktopManager.registerStackShortcut2(
-  "raise_hand_button",
-  "raise_hand_button",
-  "",
-  ROLLER_CLASS_NAME,
-  uiDbName,
-  true);
-
 
   local craftingRecord = {
       bExport = true,
